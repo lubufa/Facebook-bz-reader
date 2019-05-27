@@ -1,0 +1,26 @@
+/*PER FUNZIONARE HO DOVUTO INSTALLARE SNAPPYJS E ATOB
+npm i snappyjs DA TERMINALE
+*/
+
+
+var SnappyJS = require("snappyjs");
+var atob     = require('atob');
+
+
+var cifrato= "ADD THE VALUE OF POSTS HERE";
+var sendatob=atob(cifrato);
+
+// MI CREO UN UINIT8ARRAY E LO RIEMPIO CON I RISPETTIVI CHARAT
+var arr= new Uint8Array(sendatob.length)
+for (var posto = 0; posto < sendatob.length; posto++)
+{
+    arr[posto]= sendatob.charCodeAt(posto);
+}
+
+var uncprs=SnappyJS.uncompress(arr);
+var clear="";
+for (posto = 0; posto < uncprs.length; posto++)
+{
+    clear += String.fromCharCode(uncprs[posto]);
+}
+console.log(clear);
